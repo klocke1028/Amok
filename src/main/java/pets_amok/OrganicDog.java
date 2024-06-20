@@ -35,7 +35,7 @@ public class OrganicDog extends Dog implements Organic {
         thirst -= 1;
         cleanliness -= 1;
         happiness -= 1;
-        if (hunger < 10 || thirst < 10 || cleanliness < 10 || happiness < 10) {
+        if (hunger < 10 || thirst < 10 || cleanliness < 10 || bathroomNeed > 20 || happiness < 10) {
             health -= 2;
         }
 

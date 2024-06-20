@@ -3,7 +3,7 @@ package pets_amok;
 public class RoboticDog extends Dog implements Robotic {
     int robotMaintenance = 15;
     
-    public RoboticDog(String name, String description, int happiness, int health) {
+    public RoboticDog(String name, String description, int happiness, int health, int robotMaintenance) {
         super (name, description, happiness, health);
 }
 

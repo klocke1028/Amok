@@ -8,13 +8,13 @@ public class Application {
         Scanner userInput = new Scanner(System.in);
 
         VirtualPetShelter availablePets = new VirtualPetShelter();
-        VirtualPet pet1 = new VirtualPet("Gomez", "Organic", 10, 10, 10, 10);
-        VirtualPet pet2 = new VirtualPet("Fester", "Organic", 10, 10, 10, 10);
-        VirtualPet pet3 = new VirtualPet("Bo", "Robotic", 10, 10, 10, 10);
+        VirtualPet orgCat1 = new OrganicCat("Gomez", "Organic Cat", 15, 15, 15, 15, 15);
+        VirtualPet orgCat2 = new OrganicCat("Fester", "Organic Cat", 15, 15, 15, 15, 15);
+        VirtualPet roboDog1 = new RoboticDog("Bo", "Robotic Dog", 10, 10, 10);
 
-        availablePets.admitPet(pet1);
-        availablePets.admitPet(pet2);
-        availablePets.admitPet(pet3);
+        availablePets.admitPet(orgCat1);
+        availablePets.admitPet(orgCat2);
+        availablePets.admitPet(roboDog1);
 
         System.out.println("Welcome to Kate's Animal Shelter! We really appreciate you volunteering.");
         System.out.println("Here is a list of current shelter animals and their stats.");
@@ -53,17 +53,23 @@ public class Application {
                 availablePets.waterOrgPets();
 
             } else if (selectOption == 3) {
-                System.out.println("Which pet would you like to play with?");
-                String name = userInput.nextLine();
-                availablePets.findPetName(name).playWithPet();
+                availablePets.changeLitterBox();
 
+            } else if (selectOption == 4) {
+                availablePets.cleanCages();
+
+            } else if (selectOption == 5) {
+                availablePets.walkAllDogs();
+
+            } else if (selectOption == 6) {
+                availablePets.oilRoboticPets();
+            
             } else if (selectOption == 7) {
                 System.out.println("Which pet would you like to adopt out?");
                 String name = userInput.nextLine();
                 availablePets.adoptOutPet(name);
-                System.out.println("Goodbye " + name);
+                System.out.println("Goodbye " + name + "!");
                 
-
             } else if (selectOption == 8) {
                 System.out.println("Please tell us the pet's type.");
                 System.out.println("[A] for organic cat.");
@@ -77,10 +83,30 @@ public class Application {
                     System.out.println("Describe them.");
                     String description = userInput.nextLine();
                     VirtualPet newOrgCat = new OrganicCat(orgCatName, description, 15, 15, 15, 15, 15);
+                    availablePets.admitPet(newOrgCat);
+                    System.out.println("Hello " + orgCatName);
                 } else if (petType.contains("B")) {
                     System.out.println("What is their name?");
                     String roboCatName = userInput.nextLine();
-                    VirtualPet newRoboCat = new RoboticCat(roboCatName, roboCatName, selectOption, selectOption);
+                    System.out.println("Describe them.");
+                    String description = userInput.nextLine();
+                    VirtualPet newRoboCat = new RoboticCat(roboCatName, description, 15, 15, 15);
+                    availablePets.admitPet(newRoboCat);
+                    System.out.println("Hello " + roboCatName);
+                } else if (petType.contains("C")) {
+                    System.out.println("What is their name?");
+                    String orgDogName = userInput.nextLine();
+                    System.out.println("Describe them.");
+                    String description = userInput.nextLine();
+                    VirtualPet newOrgDog = new OrganicDog(orgDogName, description, 15, 15, 15, 15, 15, 15);
+                    availablePets.admitPet(newOrgDog);
+                } else if (petType.contains("D")) {
+                    System.out.println("What is their name?");
+                    String roboDogName = userInput.nextLine();
+                    System.out.println("Describe them");
+                    String description = userInput.nextLine();
+                    VirtualPet newRoboDog = new RoboticDog(roboDogName, description, 15, 15, 15);
+                    availablePets.admitPet(newRoboDog);
                 }
             
             
@@ -89,5 +115,6 @@ public class Application {
         userInput.close();
     }
 
+}
 }
 
