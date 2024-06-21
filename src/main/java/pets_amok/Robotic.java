@@ -1,8 +1,19 @@
 package pets_amok;
 
-public interface Robotic {
-    public void oilRoboticPets();
+public abstract class Robotic extends VirtualPet {
+    int robotMaintenance = 15;
 
-    public void tick();
+    public Robotic(String name, String description, int happiness, int health, int robotMaintenance) {
+        super(name, description, happiness, health);
+    }
+
+    protected abstract void getAllRoboPets();
+
+    public void oilRoboticPets() {
+        robotMaintenance += 5;
+    }
+
+    public void tick() {
+    }
 
 }

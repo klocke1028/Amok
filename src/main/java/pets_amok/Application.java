@@ -22,10 +22,11 @@ public class Application {
         int selectOption;
 
         do {
-            System.out.println("Name | Description | Hunger | Thirst | Boredom  | Health");
-            for (VirtualPet availablePet : availablePets.getAllPets()) {
-                System.out.println(availablePet.getName() + " | " + availablePet.getDescription() + " | " + availablePet.getHunger() + " | "
-                        + availablePet.getThirst() + " | " + availablePet.getBoredom());
+            System.out.println("Organic Pet Stats:");
+            System.out.println("Name | Description | Happiness | Hunger  | Thirst | Cleanliness  | ");
+            for (VirtualPet : availablePets.getAllOrgPets()) {
+                System.out.println(availablePets.getName() + " | " + availablePets.getDescription() + " | " + availablePets.getHunger() + " | "
+                        + availablePets.getThirst() + " | " + availablePets.getBoredom());
             }
 
             System.out.println("What would you like to do?");

@@ -1,15 +1,17 @@
 package pets_amok;
 
-public class OrganicCat extends Cat implements Organic {
+public class OrganicCat extends Organic implements Cat {
 
-    int hunger = 10;
-    int thirst = 10;
-    int cleanliness = 10;
+    public OrganicCat(String name, String description, int happiness, int hunger, int thirst, int health,
+            int cleanliness) {
+        super(name, description, happiness, hunger, thirst, cleanliness, health);
+    }
 
-    public OrganicCat(String name, String description, int happiness, int health, int hunger, int thirst, int cleanliness) {
-        super (name, description, happiness, health);
-        this.hunger = hunger;
-        this.thirst = thirst;
+    public int getCleanliness() {
+        return cleanliness;
+    }
+
+    public void setCleanliness(int cleanliness) {
         this.cleanliness = cleanliness;
     }
 
@@ -36,6 +38,9 @@ public class OrganicCat extends Cat implements Organic {
 
     }
 
-    
+    @Override
+    protected void getAllOrgPets() {
+
+    }
 
 }

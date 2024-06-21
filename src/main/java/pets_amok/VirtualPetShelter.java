@@ -2,14 +2,27 @@ package pets_amok;
 
 import java.util.Map;
 import java.util.HashMap;
-import java.util.Collection;
 
 public class VirtualPetShelter {
 
     public Map<String, VirtualPet> kateShelter = new HashMap<>();
 
-    public Collection<VirtualPet> getAllPets() {
-        return kateShelter.values();
+    public void getAllOrgPets() {
+        for (Map.Entry<String, VirtualPet> virtualPet : this.kateShelter.entrySet()) {
+            if (virtualPet instanceof Organic) {
+                Organic orgPet = (Organic) virtualPet;
+                orgPet.getAllOrgPets();
+            }
+        }
+    }
+
+    public void getAllRoboPets() {
+        for (Map.Entry<String, VirtualPet> virtualPet : this.kateShelter.entrySet()) {
+            if (virtualPet instanceof Robotic) {
+                Robotic roboPet = (Robotic) virtualPet;
+                roboPet.getAllRoboPets();
+            }
+        }
     }
 
     public VirtualPet findPetName(String name) {
@@ -58,7 +71,7 @@ public class VirtualPetShelter {
             if (virtualPet instanceof OrganicCat) {
                 OrganicCat orgCat = (OrganicCat) virtualPet;
                 orgCat.changeLitter();
-            } 
+            }
         }
     }
 
@@ -89,7 +102,7 @@ public class VirtualPetShelter {
             if (virtualPet instanceof Robotic) {
                 Robotic roboPet = (Robotic) virtualPet;
                 roboPet.oilRoboticPets();
-            } 
+            }
         }
     }
 
