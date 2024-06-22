@@ -1,7 +1,7 @@
 package pets_amok;
 
 public class OrganicDog extends Organic implements Dog {
-    int bathroomNeed = 15;
+    private int bathroomNeed = 15;
 
     public OrganicDog(String name, String description, int happiness, int hunger, int thirst, int health,
             int cleanliness, int bathroomNeed) {
@@ -37,11 +37,6 @@ public class OrganicDog extends Organic implements Dog {
         if (hunger < 10 || thirst < 10 || cleanliness < 10 || bathroomNeed > 20 || happiness < 10) {
             health -= 2;
         }
-
-    }
-
-    @Override
-    protected void getAllOrgPets() {
 
     }
 

@@ -19,9 +19,4 @@ public class RoboticDog extends Robotic implements Dog {
         }
     }
 
-    @Override
-    protected void getAllRoboPets() {
-
-    }
-
 }

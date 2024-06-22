@@ -52,5 +52,4 @@ public abstract class VirtualPet {
     public void tick() {
 
     }
-
 }

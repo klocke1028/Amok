@@ -7,8 +7,6 @@ public abstract class Robotic extends VirtualPet {
         super(name, description, happiness, health);
     }
 
-    protected abstract void getAllRoboPets();
-
     public void oilRoboticPets() {
         robotMaintenance += 5;
     }

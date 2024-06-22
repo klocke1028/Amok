@@ -5,24 +5,14 @@ import java.util.HashMap;
 
 public class VirtualPetShelter {
 
-    public Map<String, VirtualPet> kateShelter = new HashMap<>();
+    private Map<String, VirtualPet> kateShelter = new HashMap<>();
 
-    public void getAllOrgPets() {
-        for (Map.Entry<String, VirtualPet> virtualPet : this.kateShelter.entrySet()) {
-            if (virtualPet instanceof Organic) {
-                Organic orgPet = (Organic) virtualPet;
-                orgPet.getAllOrgPets();
-            }
-        }
+    public Map<String, VirtualPet> getKateShelter() {
+        return kateShelter;
     }
 
-    public void getAllRoboPets() {
-        for (Map.Entry<String, VirtualPet> virtualPet : this.kateShelter.entrySet()) {
-            if (virtualPet instanceof Robotic) {
-                Robotic roboPet = (Robotic) virtualPet;
-                roboPet.getAllRoboPets();
-            }
-        }
+    public void setKateShelter(Map<String, VirtualPet> kateShelter) {
+        this.kateShelter = kateShelter;
     }
 
     public VirtualPet findPetName(String name) {

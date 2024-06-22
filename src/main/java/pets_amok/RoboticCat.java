@@ -13,9 +13,4 @@ public class RoboticCat extends Robotic implements Cat {
             health -= 2;
         }
     }
-
-    @Override
-    protected void getAllRoboPets() {
-
-    }
 }

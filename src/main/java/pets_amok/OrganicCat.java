@@ -38,9 +38,4 @@ public class OrganicCat extends Organic implements Cat {
 
     }
 
-    @Override
-    protected void getAllOrgPets() {
-
-    }
-
 }

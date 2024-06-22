@@ -2,17 +2,15 @@ package pets_amok;
 
 public abstract class Organic extends VirtualPet {
 
-    int hunger = 15;
-    int thirst = 15;
-    int cleanliness = 15;
+    protected int hunger = 15;
+    protected int thirst = 15;
+    protected int cleanliness = 15;
 
     public Organic(String name, String description, int happiness, int hunger, int thirst, int cleanliness,
             int health) {
         super(name, description, happiness, health);
 
     }
-
-    protected abstract void getAllOrgPets();
 
     public int getHunger() {
         return hunger;

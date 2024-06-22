@@ -1,5 +1,6 @@
 package pets_amok;
 
+import java.util.Map;
 import java.util.Scanner;
 
 public class Application {
@@ -22,12 +23,13 @@ public class Application {
         int selectOption;
 
         do {
-            System.out.println("Organic Pet Stats:");
-            System.out.println("Name | Description | Happiness | Hunger  | Thirst | Cleanliness  | ");
-            for (VirtualPet : availablePets.getAllOrgPets()) {
-                System.out.println(availablePets.getName() + " | " + availablePets.getDescription() + " | " + availablePets.getHunger() + " | "
-                        + availablePets.getThirst() + " | " + availablePets.getBoredom());
-            }
+            System.out.println("Pet Stats:");
+            System.out.println("Name | Description | Happiness | Hunger  | Thirst | Cleanliness | Bathroom Need");
+            for (Map.Entry<String, VirtualPet> virtualPetEntry : availablePets.getKateShelter().entrySet()) {
+                VirtualPet virtualPet = virtualPetEntry.getValue();
+                    System.out.println(virtualPet.getName() + " | " + virtualPet.getDescription() + " | " + virtualPet.getHappiness() + " | ");
+
+                }
 
             System.out.println("What would you like to do?");
             System.out.println("[1] Feed the organic pets.");
@@ -111,11 +113,12 @@ public class Application {
                 }
             
             
+    } 
+
     } while (true);
 
-        userInput.close();
-    }
+    userInput.close();
 
-}
+} 
 }
 
