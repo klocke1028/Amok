@@ -9,27 +9,35 @@ public class Application {
         Scanner userInput = new Scanner(System.in);
 
         VirtualPetShelter availablePets = new VirtualPetShelter();
-        VirtualPet orgCat1 = new OrganicCat("Gomez", "Organic Cat", 15, 15, 15, 15, 15);
-        VirtualPet orgCat2 = new OrganicCat("Fester", "Organic Cat", 15, 15, 15, 15, 15);
-        VirtualPet roboDog1 = new RoboticDog("Bo", "Robotic Dog", 10, 10, 10);
+        VirtualPet orgCat1 = new OrganicCat("Gomez", "Organic Cat", 15, 15, 15, 15);
+        VirtualPet orgDog1 = new OrganicDog("Max", "Organic Dog", 15, 15, 15, 15, 15, 15, 15);
+        VirtualPet roboDog1 = new RoboticDog("Bo", "Robotic Dog", 15, 10, 10);
+        VirtualPet roboCat1 = new RoboticCat("Fluffy", "Robotic Cat", 15, 15, 15);
 
         availablePets.admitPet(orgCat1);
-        availablePets.admitPet(orgCat2);
+        availablePets.admitPet(orgDog1);
         availablePets.admitPet(roboDog1);
-
-        System.out.println("Welcome to Kate's Animal Shelter! We really appreciate you volunteering.");
-        System.out.println("Here is a list of current shelter animals and their stats.");
-
-        int selectOption;
+        availablePets.admitPet(roboCat1);
 
         do {
-            System.out.println("Pet Stats:");
-            System.out.println("Name | Description | Happiness | Hunger  | Thirst | Cleanliness | Bathroom Need");
-            for (Map.Entry<String, VirtualPet> virtualPetEntry : availablePets.getKateShelter().entrySet()) {
-                VirtualPet virtualPet = virtualPetEntry.getValue();
-                    System.out.println(virtualPet.getName() + " | " + virtualPet.getDescription() + " | " + virtualPet.getHappiness() + " | ");
-
+            System.out.println("Organic Pet Stats:");
+            System.out.println("Litter Box Fullness: " + OrganicCat.getLitterBoxFullness());
+            System.out.println("Name | Description | Happiness | Hunger | Thirst | Health |");
+            for (Map.Entry<String, VirtualPet> virtualPet : availablePets.getKateShelter().entrySet()) {
+                if (virtualPet instanceof Organic) {
+                    Organic orgPet = (Organic) virtualPet;
+                    System.out.println(orgPet.getName() + " | " + orgPet.getDescription() + " | "
+                            + orgPet.getHappiness() + " | " + orgPet.getHunger() + " | " + orgPet.getThirst() + " | "
+                            + orgPet.getHealth() + " | ");
+                } else if (virtualPet instanceof Robotic) {
+                    Robotic roboPet = (Robotic) virtualPet;
+                    System.out.println("Robotic Pet Stats:");
+                    System.out.println("Name | Description | Happiness | Health | Maintenance |");
+                    System.out.println(
+                            roboPet.getName() + " | " + roboPet.getDescription() + " | " + roboPet.getHappiness()
+                                    + " | " + roboPet.getHealth() + " | " + roboPet.getRobotMaintenance());
                 }
+            }
 
             System.out.println("What would you like to do?");
             System.out.println("[1] Feed the organic pets.");
@@ -41,6 +49,7 @@ public class Application {
             System.out.println("[7] to adopt out a pet.");
             System.out.println("[8] to admit a new pet to the shelter.");
             System.out.println("[9] to exit the game.");
+            int selectOption;
 
             selectOption = userInput.nextInt();
             userInput.nextLine();
@@ -57,22 +66,24 @@ public class Application {
 
             } else if (selectOption == 3) {
                 availablePets.changeLitterBox();
+                System.out.println("The litter box is much cleaner.");
 
             } else if (selectOption == 4) {
                 availablePets.cleanCages();
+                System.out.println("The dog cages smell much better.");
 
             } else if (selectOption == 5) {
                 availablePets.walkAllDogs();
 
             } else if (selectOption == 6) {
                 availablePets.oilRoboticPets();
-            
+
             } else if (selectOption == 7) {
                 System.out.println("Which pet would you like to adopt out?");
                 String name = userInput.nextLine();
                 availablePets.adoptOutPet(name);
                 System.out.println("Goodbye " + name + "!");
-                
+
             } else if (selectOption == 8) {
                 System.out.println("Please tell us the pet's type.");
                 System.out.println("[A] for organic cat.");
@@ -85,7 +96,7 @@ public class Application {
                     String orgCatName = userInput.nextLine();
                     System.out.println("Describe them.");
                     String description = userInput.nextLine();
-                    VirtualPet newOrgCat = new OrganicCat(orgCatName, description, 15, 15, 15, 15, 15);
+                    VirtualPet newOrgCat = new OrganicCat(orgCatName, description, 15, 15, 15, 15);
                     availablePets.admitPet(newOrgCat);
                     System.out.println("Hello " + orgCatName);
                 } else if (petType.contains("B")) {
@@ -101,8 +112,7 @@ public class Application {
                     String orgDogName = userInput.nextLine();
                     System.out.println("Describe them.");
                     String description = userInput.nextLine();
-                    VirtualPet newOrgDog = new OrganicDog(orgDogName, description, 15, 15, 15, 15, 15, 15);
-                    availablePets.admitPet(newOrgDog);
+                    VirtualPet newOrgDog = new OrganicDog(orgDogName, description, 15, 15, 15, 15, 15, 15, 15);
                 } else if (petType.contains("D")) {
                     System.out.println("What is their name?");
                     String roboDogName = userInput.nextLine();
@@ -111,14 +121,12 @@ public class Application {
                     VirtualPet newRoboDog = new RoboticDog(roboDogName, description, 15, 15, 15);
                     availablePets.admitPet(newRoboDog);
                 }
-            
-            
-    } 
 
-    } while (true);
+            }
+        } while (true);
 
-    userInput.close();
+        userInput.close();
+    }
 
-} 
+
 }
-

@@ -5,6 +5,8 @@ import java.util.HashMap;
 
 public class VirtualPetShelter {
 
+    int litterBoxFullness = 0;
+
     private Map<String, VirtualPet> kateShelter = new HashMap<>();
 
     public Map<String, VirtualPet> getKateShelter() {
@@ -56,23 +58,14 @@ public class VirtualPetShelter {
         }
     }
 
-    public void changeLitterBox() {
-        for (Map.Entry<String, VirtualPet> virtualPet : this.kateShelter.entrySet()) {
-            if (virtualPet instanceof OrganicCat) {
-                OrganicCat orgCat = (OrganicCat) virtualPet;
-                orgCat.changeLitter();
-            }
-        }
-    }
-
     public void walkAllDogs() {
-        for (Map.Entry<String, VirtualPet> virtualPet : this.kateShelter.entrySet()) {
-            if (virtualPet instanceof OrganicDog) {
-                OrganicDog orgDog = (OrganicDog) virtualPet;
+        for (Map.Entry<String, VirtualPet> virtualPets : this.kateShelter.entrySet()) {
+            if (virtualPets instanceof OrganicDog) {
+                OrganicDog orgDog = (OrganicDog) virtualPets;
                 orgDog.letDogsDoBusiness();
                 orgDog.walkAllDogs();
-            } else if (virtualPet instanceof RoboticDog) {
-                RoboticDog roboDog = (RoboticDog) virtualPet;
+            } else if (virtualPets instanceof RoboticDog) {
+                RoboticDog roboDog = (RoboticDog) virtualPets;
                 roboDog.walkAllDogs();
             }
         }
@@ -83,6 +76,15 @@ public class VirtualPetShelter {
             if (virtualPet instanceof OrganicDog) {
                 OrganicDog orgDog = (OrganicDog) virtualPet;
                 orgDog.cleanCages();
+            }
+        }
+    }
+
+    public void changeLitterBox() {
+        for (Map.Entry<String, VirtualPet> virtualPet : this.kateShelter.entrySet()) {
+            if (virtualPet instanceof OrganicCat) {
+                OrganicCat orgCat = (OrganicCat) virtualPet;
+                orgCat.changeLitterBox();
             }
         }
     }
@@ -103,4 +105,5 @@ public class VirtualPetShelter {
         }
     }
 
+    
 }

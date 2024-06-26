@@ -3,8 +3,9 @@ package pets_amok;
 public abstract class VirtualPet {
     protected String name;
     protected String description;
-    protected int happiness = 15;
-    protected int health = 15;
+    protected int happiness;
+    protected int health;
+    
 
     public VirtualPet(String name, String description, int happiness, int health) {
         this.name = name;
@@ -52,4 +53,6 @@ public abstract class VirtualPet {
     public void tick() {
 
     }
+
+ 
 }

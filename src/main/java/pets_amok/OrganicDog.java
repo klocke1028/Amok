@@ -1,28 +1,33 @@
 package pets_amok;
 
 public class OrganicDog extends Organic implements Dog {
-    private int bathroomNeed = 15;
+    protected int bathroomNeed;
+    protected int cageCleanliness = 0;
 
     public OrganicDog(String name, String description, int happiness, int hunger, int thirst, int health,
-            int cleanliness, int bathroomNeed) {
-        super(name, description, happiness, hunger, thirst, cleanliness, health);
+            int cleanliness, int bathroomNeed, int cageCleanliness) {
+        super(name, description, happiness, hunger, thirst, health);
         this.bathroomNeed = bathroomNeed;
     }
 
-    public void feedOrganicPets() {
-        hunger += 5;
+    public int getBathroomNeed() {
+        return bathroomNeed;
     }
 
-    public void waterOrganicPets() {
-        thirst += 5;
+    public void setBathroomNeed(int bathroomNeed) {
+        this.bathroomNeed = bathroomNeed;
     }
 
-    public void walkAllDogs() {
-        happiness += 5;
+    public int getCageCleanliness() {
+        return cageCleanliness;
+    }
+
+    public void setCageCleanliness(int cageCleanliness) {
+        this.cageCleanliness = cageCleanliness;
     }
 
     public void cleanCages() {
-        cleanliness += 5;
+        cageCleanliness += 5;
     }
 
     public void letDogsDoBusiness() {
@@ -30,13 +35,20 @@ public class OrganicDog extends Organic implements Dog {
     }
 
     public void tick() {
-        hunger -= 1;
-        thirst -= 1;
-        cleanliness -= 1;
-        happiness -= 1;
-        if (hunger < 10 || thirst < 10 || cleanliness < 10 || bathroomNeed > 20 || happiness < 10) {
+        hunger += 2;
+        thirst += 2;
+        cageCleanliness -= 2;
+        happiness -= 2;
+        if (hunger >= 20 || thirst >= 20 || cageCleanliness >= 20 || bathroomNeed >= 20 || happiness <= 10) {
             health -= 2;
         }
+
+    }
+
+    @Override
+    public void walkAllDogs() {
+        happiness += 5;
+        bathroomNeed -= 5;
 
     }
 

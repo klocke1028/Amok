@@ -7,16 +7,18 @@ public class RoboticDog extends Robotic implements Dog {
 
     }
 
-    public void walkAllDogs() {
-        happiness += 5;
-    }
-
     public void tick() {
         robotMaintenance -= 1;
         happiness -= 1;
         if (robotMaintenance < 10 || happiness < 10) {
             health -= 2;
         }
+    }
+
+    @Override
+    public void walkAllDogs() {
+        happiness += 5;
+
     }
 
 }

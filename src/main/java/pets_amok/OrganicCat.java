@@ -1,38 +1,30 @@
 package pets_amok;
 
 public class OrganicCat extends Organic implements Cat {
+    protected static int litterBoxFullness = 0;
 
-    public OrganicCat(String name, String description, int happiness, int hunger, int thirst, int health,
-            int cleanliness) {
-        super(name, description, happiness, hunger, thirst, cleanliness, health);
+    public OrganicCat(String name, String description, int happiness, int hunger, int thirst, int health) {
+        super(name, description, happiness, hunger, thirst, health);
     }
 
-    public int getCleanliness() {
-        return cleanliness;
+    public static int getLitterBoxFullness() {
+        return litterBoxFullness;
     }
 
-    public void setCleanliness(int cleanliness) {
-        this.cleanliness = cleanliness;
+    public static void setLitterBoxFullness(int litterBoxFullness) {
+        OrganicCat.litterBoxFullness = litterBoxFullness;
     }
 
-    public void feedOrganicPets() {
-        hunger += 5;
-    }
-
-    public void waterOrganicPets() {
-        thirst += 5;
-    }
-
-    public void changeLitter() {
-        cleanliness += 5;
+    public void changeLitterBox() {
+        litterBoxFullness -= 5;
     }
 
     public void tick() {
-        hunger -= 1;
-        thirst -= 1;
-        cleanliness -= 1;
-        happiness -= 1;
-        if (hunger < 10 || thirst < 10 || cleanliness < 10 || happiness < 10) {
+        hunger += 2;
+        thirst += 2;
+        litterBoxFullness += 2;
+        happiness -= 2;
+        if (hunger >= 20 || thirst >= 20 || litterBoxFullness >= 20 || happiness <= 10) {
             health -= 2;
         }
 
