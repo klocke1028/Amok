@@ -113,6 +113,7 @@ public class Application {
                     System.out.println("Describe them.");
                     String description = userInput.nextLine();
                     VirtualPet newOrgDog = new OrganicDog(orgDogName, description, 15, 15, 15, 15, 15, 15, 15);
+                    availablePets.admitPet(newOrgDog);
                 } else if (petType.contains("D")) {
                     System.out.println("What is their name?");
                     String roboDogName = userInput.nextLine();
